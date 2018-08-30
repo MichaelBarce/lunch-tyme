@@ -1,0 +1,78 @@
+/* Container holding the image and the text */
+.container {
+    position: relative;
+    text-align: center;
+    width: 640px;
+    /* background: linear-gradient(to top, black, transparent); */
+}
+
+img {
+    /*  To contain the image to the confines of the div  */
+    max-width: 100%;
+  }
+  
+  .hero-image {
+    max-width: 100%; 
+    width: 800px;
+    margin: auto;
+  }
+  
+  .hero-image::after {
+    display: block;
+    position: relative;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 100%);
+    /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%); */
+    margin-top: -250px;
+    height: 250px;
+    width: 100%;
+    content: '';
+  }
+
+
+  .restaurant-name {
+    position: absolute;
+    bottom: 60px;
+    left: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font: 'Trebuchet MS';
+    font-size: 20px;
+    font-weight: bold;
+    color: white;    
+}
+
+.restaurant-category {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font: 'Trebuchet MS';
+    font-size: 16px;
+    color: white;    
+}
+
+
+/* Bottom right text */
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* div {
+    width: 100%;
+    height: 25%;
+  }.simple-linear-gradient {
+    background: linear-gradient(blue, pink);
+  } */
