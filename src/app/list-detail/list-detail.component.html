@@ -10,9 +10,11 @@
 </div> -->
 
 <div class="container" *ngFor="let restaurant of restaurantList">
-    <div class="hero-image">
-        <img [src]='restaurant.backgroundImageURL'>
+    <div (click)="viewDetails(restaurant)">
+        <div class="hero-image">
+            <img [src]='restaurant.backgroundImageURL'>
+        </div>
+        <div class="restaurant-name">{{restaurant.name}}</div>
+        <div class="restaurant-category">{{restaurant.category}}</div>
     </div>
-    <div class="restaurant-name">{{restaurant.name}}</div> 
-    <div class="restaurant-category">{{restaurant.category}}</div> 
 </div>

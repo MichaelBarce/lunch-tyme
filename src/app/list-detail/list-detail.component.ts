@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
-import { Restaurants } from '../model/restaurants';
 import { Restaurant } from '../model/restaurant';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-list-detail',
@@ -12,12 +12,14 @@ export class ListDetailComponent implements OnInit {
 
 restaurantList: Restaurant[];
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     console.log("ListDetailComponent :: ngOnInit()");
     this.getRestaurants();
-
   }
 
   getRestaurants() {
@@ -27,6 +29,18 @@ restaurantList: Restaurant[];
         this.restaurantList = data.restaurants;
         console.log(this.restaurantList);
       });
+  }
+
+  viewDetails(restaurant){
+    console.log("ListDetailComponent :: viewDetails()");
+    console.log("restaurant.name: " + restaurant.name);
+    console.log("restaurant.location.lat: " + restaurant.location.lat);
+    console.log("restaurant.location.lng: " + restaurant.location.lng);
+    //this.dataService.changeSelectedRestaurant(restaurant);
+    this.dataService.setSelectedRestaurant(restaurant);
+    this.router.navigate(['/mapbox', restaurant]);
+    
+
   }
 
 }

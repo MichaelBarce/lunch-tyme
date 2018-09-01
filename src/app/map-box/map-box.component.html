@@ -1,8 +1,7 @@
-<!-- <input type="text" [(ngModel)]="message" placeholder="your message..."> -->
-<h1>Markers</h1>
-<!-- <div *ngFor="let marker of markers | async">
-  <button (click)="flyTo(marker)">{{ marker.properties.message }}</button>
-  <button (click)="removeMarker(marker)">Delete</button>
-</div> -->
-
-<div class="map" id="map"></div>
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng">
+      <agm-info-window>Bork</agm-info-window>
+  </agm-marker>
+</agm-map>

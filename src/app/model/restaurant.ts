@@ -1,25 +1,9 @@
+import { Location } from "./location";
+
 export interface Restaurant {
     name: string;
     backgroundImageURL: string;
     category: string;
-    contact: any;
-    location: any;
+    contact: string;
+    location: Location;
 }
-
-//   export class Restaurant {
-//     public name: string;
-//     public backgroundImageURL: string;
-//     public category: string;
-//     public contact: any;
-//     public location: any;
-
-//     constructor(name:string, backgroundImageURL:string, 
-//         category:string, contact: any, location: any) {
-//       this.name = name;
-//       this.backgroundImageURL = backgroundImageURL;
-//       this.category = category;
-//       this.contact = contact;      
-//       this.location = location;
-//     }
-//   }
-

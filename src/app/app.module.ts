@@ -14,14 +14,16 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MatOptionModule, MatSelectModule, MatChipsModule, MatSlideToggleModule } from '@angular/material';
 import { MapBoxComponent } from './map-box/map-box.component';
 import { ROUTES } from './app.routes';
-
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListDetailComponent,
     ContactComponent,
-    MapBoxComponent
+    MapBoxComponent,
+    MainNavComponent
   ],
   imports: [
      BrowserModule
@@ -33,9 +35,11 @@ import { ROUTES } from './app.routes';
     ,MatCardModule, MatTableModule, MatFormFieldModule, MatInputModule
     ,MatProgressSpinnerModule, MatTabsModule, MatOptionModule
     ,MatSelectModule, MatChipsModule, MatSlideToggleModule
+    ,AgmCoreModule.forRoot({apiKey: 'AIzaSyACOQCGoUpwh5oQY0EepOBMghKWddIItAg'})
   ],
   providers: [
-    DataService
+     DataService
+    //,MapService
   ],
   bootstrap: [AppComponent]
 })
