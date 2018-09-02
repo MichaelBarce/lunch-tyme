@@ -1,9 +1,10 @@
 import { Location } from "./location";
+import { Contact } from "./contact";
 
 export interface Restaurant {
     name: string;
     backgroundImageURL: string;
     category: string;
-    contact: string;
+    contact: Contact;
     location: Location;
 }

@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './service/data.service';
 import { RouterModule, CanActivate } from '@angular/router';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, 
-  MatListModule, MatCheckboxModule, MatGridListModule, 
+  MatListModule, MatCheckboxModule, MatGridListModule,
   MatCardModule, MatTableModule, MatFormFieldModule,
   MatInputModule, MatProgressSpinnerModule, MatTabsModule, 
   MatOptionModule, MatSelectModule, MatChipsModule, MatSlideToggleModule } from '@angular/material';
@@ -16,6 +16,8 @@ import { MapBoxComponent } from './map-box/map-box.component';
 import { ROUTES } from './app.routes';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { AgmCoreModule } from '@agm/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexyComponent } from './flexy/flexy.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { AgmCoreModule } from '@agm/core';
     ListDetailComponent,
     ContactComponent,
     MapBoxComponent,
-    MainNavComponent
+    MainNavComponent,
+    FlexyComponent
   ],
   imports: [
      BrowserModule
     ,BrowserAnimationsModule
     ,HttpClientModule
+    ,FlexLayoutModule
     ,RouterModule.forRoot(ROUTES)
     ,MatToolbarModule, MatButtonModule, MatSidenavModule
     ,MatIconModule, MatListModule, MatCheckboxModule, MatGridListModule

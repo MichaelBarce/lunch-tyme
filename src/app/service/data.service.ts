@@ -11,8 +11,8 @@ export class DataService {
 
   private selectedRestaurant: Restaurant;
 
-  private selectedRestaurantSource = new Subject<Restaurant | null>();
-  selectedRestaurantChanges$ = this.selectedRestaurantSource.asObservable();
+  private disableSideNavSource = new Subject<boolean | null>();
+  disableSideNavChanges$ = this.disableSideNavSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -26,10 +26,10 @@ export class DataService {
     return this.selectedRestaurant;
   }
 
-  changeSelectedRestaurant(selectedRestaurtant: Restaurant | null): void {
-    console.log("changeSelectedRestaurant :: selectedRestaurtant");
-    //console.log(selectedRestaurtant);
-    this.selectedRestaurantSource.next(selectedRestaurtant);
+  changeDisableSideNav(disableSideNav: boolean | null): void {
+    console.log("changeDisableSideNav :: disableSideNav");
+    console.log(disableSideNav);
+    this.disableSideNavSource.next(disableSideNav);
   }
 
   public getRestaurants(): Observable<Restaurants> {

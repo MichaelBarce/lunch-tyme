@@ -6,7 +6,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-list-detail',
   templateUrl: './list-detail.component.html',
-  styleUrls: ['./list-detail.component.css']
+  styleUrls: ['./list-detail.component.scss']
 })
 export class ListDetailComponent implements OnInit {
 
@@ -19,6 +19,7 @@ restaurantList: Restaurant[];
 
   ngOnInit() {
     console.log("ListDetailComponent :: ngOnInit()");
+    this.dataService.changeDisableSideNav(false);
     this.getRestaurants();
   }
 
@@ -34,13 +35,9 @@ restaurantList: Restaurant[];
   viewDetails(restaurant){
     console.log("ListDetailComponent :: viewDetails()");
     console.log("restaurant.name: " + restaurant.name);
-    console.log("restaurant.location.lat: " + restaurant.location.lat);
-    console.log("restaurant.location.lng: " + restaurant.location.lng);
-    //this.dataService.changeSelectedRestaurant(restaurant);
     this.dataService.setSelectedRestaurant(restaurant);
-    this.router.navigate(['/mapbox', restaurant]);
-    
-
+    this.dataService.changeDisableSideNav(true);
+    this.router.navigate(['/mapbox']);
   }
 
 }
