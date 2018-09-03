@@ -1,20 +1,14 @@
-<!-- <div class="container" *ngFor="let restaurant of restaurantList">
-    <mat-card class="policy-card">
-        <mat-card-content style="overflow-x: auto; overflow-x: hidden; width: 100%;">
-            <div class="hero-image">
-                <img [src]='restaurant.backgroundImageURL'>
+<div class="restaurant-container">
+    <div class="item" *ngFor="let restaurant of restaurantList">
+        <mat-card>
+            <div (click)="viewDetails(restaurant)">
+                    <div class="restaurant-image">
+                            <img [src]='restaurant.backgroundImageURL'>
+                    </div>
+                <div class="restaurant-name">{{restaurant.name}}</div>
+                <div class="restaurant-category">{{restaurant.category}}</div>
             </div>
-            <div class="bottom-left">{{restaurant.name}}</div> 
-        </mat-card-content>
-    </mat-card>
-</div> -->
-
-<div class="container" *ngFor="let restaurant of restaurantList">
-    <div (click)="viewDetails(restaurant)">
-        <div class="hero-image">
-            <img [src]='restaurant.backgroundImageURL'>
-        </div>
-        <div class="restaurant-name">{{restaurant.name}}</div>
-        <div class="restaurant-category">{{restaurant.category}}</div>
+        </mat-card>
     </div>
 </div>
+

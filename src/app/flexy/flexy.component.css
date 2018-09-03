@@ -1,0 +1,59 @@
+/* html,body {
+  margin: 0;
+  padding:0;
+}
+
+html {
+  box-sizing: border-box;
+} */
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.parent {
+  display: flex;
+  flex-flow: row wrap;
+  margin:0 0 0 -.5rem;/* offset margin to the left and avoid horizontal scrollbar*/
+}
+
+.child {
+  flex: 1 0 20%;/* less than 25% but more or equal to 20% to account for margins - when 4 across is required */
+  min-width: 200px;/* min-width on flex items not working in ios so use media queries instead*/
+  padding: 0 0.5rem 1rem;
+  /* padding: 20px; */
+  background: #222;
+  color: #fff;
+  margin: 0 0 1.5rem 1.5rem;
+  /* margin:0 0 .5rem .5rem; */
+}
+
+.parent4 .child{flex:1 0 34%}/* less than 50% but more than or equal to 33.33333%*/
+.parent4 .child{background:orange}
+
+.container{
+  padding: 20px;
+  /* padding:1em 0; */
+  margin:2em auto;
+  /* max-width:1060px; */
+  background:#ccc;
+}
+
+
+
+/* .item {
+    width: 100%
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .container>div {
+    flex: 0 50%;
+    border: red solid;
+    box-sizing:border-box
+  } */
+
+  
