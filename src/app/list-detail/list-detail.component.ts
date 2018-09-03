@@ -10,7 +10,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ListDetailComponent implements OnInit {
 
-restaurantList: Restaurant[];
+  private disableSideNav: boolean;
+  private restaurant: Restaurant;
+  restaurantList: Restaurant[];
 
   constructor(
     private dataService: DataService,
@@ -19,8 +21,17 @@ restaurantList: Restaurant[];
 
   ngOnInit() {
     console.log("ListDetailComponent :: ngOnInit()");
-    this.dataService.changeDisableSideNav(false);
+    this.disableSideNav = false;
+    this.dataService.changeDisableSideNav(this.disableSideNav);
     this.getRestaurants();
+    this.dataService.disableSideNavChanges$.subscribe(
+      data => {
+        this.disableSideNav = data;
+        console.log("ListDetailComponent :: ngOnInit :: subscribe :: disableSideNavChanges$ ");
+        console.log("this.disableSideNav");
+        console.log(this.disableSideNav);
+      }
+    );     
   }
 
   getRestaurants() {
@@ -28,6 +39,8 @@ restaurantList: Restaurant[];
     this.dataService.getRestaurants().subscribe(
       data => {
         this.restaurantList = data.restaurants;
+        this.restaurant = data.restaurants[0];
+        this.dataService.setSelectedRestaurant(this.restaurant);
         console.log(this.restaurantList);
       });
   }
@@ -36,8 +49,16 @@ restaurantList: Restaurant[];
     console.log("ListDetailComponent :: viewDetails()");
     console.log("restaurant.name: " + restaurant.name);
     this.dataService.setSelectedRestaurant(restaurant);
-    this.dataService.changeDisableSideNav(true);
-    this.router.navigate(['/mapbox']);
+    this.disableSideNav = true;
+    this.dataService.changeDisableSideNav(this.disableSideNav);
+  }
+
+  private initializeMap() {
+    console.log('ListDetailComponent :: initializeMap');
+    this.restaurant = this.dataService.getSelectedRestaurant();
+    // if (this.restaurant == undefined) {
+    //   this.router.navigate(['/listdetail']);
+    // }
   }
 
 }

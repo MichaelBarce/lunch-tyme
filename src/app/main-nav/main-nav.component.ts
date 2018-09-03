@@ -35,7 +35,7 @@ export class MainNavComponent {
     this.dataService.disableSideNavChanges$.subscribe(
       data => {
         this.disableSideNav = data;
-        console.log("MapBoxComponent :: ngOnInit");
+        console.log("MainNavComponent :: ngOnInit :: subscribe :: disableSideNavChanges$ ");
         console.log("this.disableSideNav");
         console.log(this.disableSideNav);
       }
@@ -45,7 +45,7 @@ export class MainNavComponent {
   viewList(){
     console.log("MainNavComponent :: viewList()");
     this.dataService.changeDisableSideNav(false);
-    this.router.navigate(['/listdetails']);
+    //this.router.navigate(['/listdetails']);
   }
 
   }

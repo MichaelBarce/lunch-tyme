@@ -1,4 +1,31 @@
-<div class="restaurant-container">
+<div *ngIf="disableSideNav == true">
+    <agm-map [zoom]="17" [latitude]="restaurant.location.lat" [longitude]="restaurant.location.lng">
+        <agm-marker [latitude]="restaurant.location.lat" [longitude]="restaurant.location.lng">
+            <!-- <agm-info-window>Bork</agm-info-window> -->
+        </agm-marker>
+    </agm-map>
+    <mat-card id="restaurant-details">
+        <mat-card-header>
+            <mat-card-title>
+                {{ restaurant.name }}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{ restaurant.category }}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content style="margin-top: 10px;">
+            {{ restaurant.contact.formattedPhone || "No phone listed"}}
+        </mat-card-content>
+        <mat-card-content>
+            {{ restaurant.location.formattedAddress[0] }}<br> {{ restaurant.location.formattedAddress[1] }}
+        </mat-card-content>
+        <mat-card-content>
+            {{ restaurant.contact.twitter }}
+        </mat-card-content>
+    </mat-card>
+</div>
+  
+<div *ngIf="disableSideNav == false" class="restaurant-container">
     <div class="item" *ngFor="let restaurant of restaurantList">
         <mat-card>
             <div (click)="viewDetails(restaurant)">

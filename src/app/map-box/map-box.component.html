@@ -1,16 +1,8 @@
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
 <agm-map [zoom]="17" [latitude]="restaurant.location.lat" [longitude]="restaurant.location.lng">
   <agm-marker [latitude]="restaurant.location.lat" [longitude]="restaurant.location.lng">
     <!-- <agm-info-window>Bork</agm-info-window> -->
   </agm-marker>
 </agm-map>
-
-<!-- <mat-toolbar color="primary" style="height: 100px;">
-  <div>{{ restaurant.name }}</div><br>
-  <div>{{ restaurant.category }}</div>
-</mat-toolbar> -->
-
 <mat-card>
     <mat-card-header>
         <mat-card-title>
@@ -31,19 +23,4 @@
         {{ restaurant.contact.twitter }}
     </mat-card-content>    
 </mat-card>
-
-
-<!-- <div class="container" color="primary">
-  <div>{{ restaurant.name }}</div>
-  <div>{{ restaurant.category }}</div>
-</div> -->
-
-<!-- <mat-toolbar color="primary">
-  <mat-toolbar-row>
-      <div>{{ restaurant.name }}</div>
-    </mat-toolbar-row>
-  <mat-toolbar-row>
-    <span>{{ restaurant.category }}</span>
-  </mat-toolbar-row>
-</mat-toolbar> -->
 
