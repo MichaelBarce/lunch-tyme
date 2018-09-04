@@ -1,6 +1,5 @@
 <mat-sidenav-container 
   class="sidenav-container">
-
   <mat-sidenav
     #drawer
     class="sidenav"
@@ -20,7 +19,6 @@
       <a mat-list-item (click)="drawer.toggle()" routerLink="contact">Contact</a>
     </mat-nav-list>
   </mat-sidenav>
-
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
@@ -31,7 +29,6 @@
         (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-
       <button
       type="button"
       aria-label="Toggle sidenav"
@@ -40,11 +37,8 @@
       (click)="viewList()">
       <mat-icon aria-label="Side nav toggle icon" >arrow_back_ios</mat-icon>
     </button>
-
       <span>Lunch Tyme</span>
-
       <span class="toolbar-filler"></span>
-
       <button
       type="button"
       aria-label="Toggle sidenav"
@@ -52,13 +46,7 @@
       (click)="viewMap()">
       <mat-icon aria-label="Side nav toggle icon">map</mat-icon>
     </button>
-
-      
-
-
     </mat-toolbar>
-    <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-
 </mat-sidenav-container>

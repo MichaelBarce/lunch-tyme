@@ -35,32 +35,24 @@ export class MainNavComponent {
     this.dataService.disableSideNavChanges$.subscribe(
       data => {
         this.disableSideNav = data;
-        console.log("MainNavComponent :: ngOnInit :: subscribe :: disableSideNavChanges$ ");
-        console.log("this.disableSideNav");
-        console.log(this.disableSideNav);
+        //console.log("MainNavComponent :: ngOnInit :: subscribe :: disableSideNavChanges$ ");
       }
     ); 
   }
 
   viewList(){
-    console.log("MainNavComponent :: viewList()");
+    //console.log("MainNavComponent :: viewList()");
     this.dataService.changeDisableSideNav(false);
-    //this.router.navigate(['/listdetails']);
   }
 
   viewMap(){
-    console.log("MainNavComponent :: viewMap()");
+    //console.log("MainNavComponent :: viewMap()");
     if(this.disableSideNav == true) {
       this.dataService.changeDisableSideNav(false);
     }
     else {
       this.dataService.changeDisableSideNav(true);
     }
-
-
-
-
   }
-
 
   }
