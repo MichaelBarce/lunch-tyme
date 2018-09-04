@@ -48,4 +48,19 @@ export class MainNavComponent {
     //this.router.navigate(['/listdetails']);
   }
 
+  viewMap(){
+    console.log("MainNavComponent :: viewMap()");
+    if(this.disableSideNav == true) {
+      this.dataService.changeDisableSideNav(false);
+    }
+    else {
+      this.dataService.changeDisableSideNav(true);
+    }
+
+
+
+
+  }
+
+
   }

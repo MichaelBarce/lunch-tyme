@@ -40,10 +40,23 @@
       mat-icon-button
       *ngIf="disableSideNav == true"
       (click)="viewList()">
-      <mat-icon aria-label="Side nav toggle icon">arrow_back_ios</mat-icon>
+      <mat-icon aria-label="Side nav toggle icon" >arrow_back_ios</mat-icon>
     </button>
 
       <span>Lunch Tyme</span>
+
+      <span class="toolbar-filler"></span>
+
+      <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="viewMap()">
+      <mat-icon aria-label="Side nav toggle icon">map</mat-icon>
+    </button>
+
+      
+
 
     </mat-toolbar>
     <!-- Add Content Here -->
