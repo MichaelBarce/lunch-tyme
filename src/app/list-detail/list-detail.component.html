@@ -1,6 +1,7 @@
 <div #containerLayout>
-    <div *ngIf="disableSideNav == true">
+    <div *ngIf="disableSideNav == true" restaurant-container>
         <agm-map 
+            #gm
             style="position: absolute;"
             [style.left.px]="5"
             [style.height.px]="mapHeight"
@@ -9,9 +10,24 @@
             [zoom]="17" 
             [latitude]="restaurant.location.lat" 
             [longitude]="restaurant.location.lng">
-            <agm-marker [latitude]="restaurant.location.lat" [longitude]="restaurant.location.lng">
-                <!-- <agm-info-window>Bork</agm-info-window> -->
-            </agm-marker>
+            <div class="item" *ngFor="let restaurant of restaurantList">
+                <agm-marker 
+                    (mouseOver)="onMouseOver(infoWindow, gm)"
+                    (markerClick)="viewDetails(restaurant)" 
+                    [latitude]="restaurant.location.lat" 
+                    [longitude]="restaurant.location.lng">
+                    <agm-info-window #infoWindow>
+                            <div>
+                                <a 
+                                    (click)="viewDetails(restaurant)" 
+                                    class="btn btn-attention pull-right">
+                                    {{restaurant.name}}
+                                    <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            </div>
+                    </agm-info-window>
+                </agm-marker>
+            </div>
         </agm-map>
         <mat-card 
             id="restaurant-details"

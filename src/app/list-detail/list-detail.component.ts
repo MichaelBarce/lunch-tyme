@@ -25,34 +25,13 @@ export class ListDetailComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   sizeChange(event) {
     console.log("sizeChange");
-    //if (this.disableSideNav == true) {
-    this.winWidth = event.currentTarget.innerWidth;
+    this.winWidth = event.currentTarget.innerWidth - 10;
     this.winHeight = event.currentTarget.innerHeight;
     this.width = event.currentTarget.innerWidth;
     this.detailsHeight = 250;
-    this.mapHeight = event.currentTarget.innerHeight - (65 + this.detailsHeight);
-    this.detailsTop = (65 + this.mapHeight);
-
-  
-    console.log("this.winHeight");
-    console.log(this.winHeight);
-    console.log("this.winWidth");
-    console.log(this.winWidth);
-    //}
-
-    // this.vpWidth = (this.winWidth - (3 * this.pddng)) / 2;
-    // this.rvpLeft = (this.vpWidth + (2 * this.pddng));
-    // this.pvpHeight = (this.vpWidth * (9 / 16));
-    // this.lvpTop = (this.toolbarHeight + (this.pddng * 2) + this.pvpHeight); 
-    // this.lvpHeight = this.winHeight - (this.toolbarHeight + (this.pddng * 3) + this.pvpHeight); 
-    // this.rvpHeight = (this.winHeight - (this.toolbarHeight + (this.pddng * 3))) / 2; 
-    // this.vptTop = (this.toolbarHeight + this.pddng); 
-    // this.rvpmTop = (this.toolbarHeight + (this.pddng * 2) + this.rvpHeight); 
-    // this.rvpbTop = (this.toolbarHeight + (this.pddng * 2) + (this.rvpHeight)); 
-    // this.searchInputWidth = (this.vpWidth * .85);
-    // this.btnWidth = this.vpWidth - 48;
+    this.mapHeight = event.currentTarget.innerHeight - (67 + this.detailsHeight);
+    this.detailsTop = (67 + this.mapHeight);
   }
-
 
   constructor(
     private dataService: DataService,
@@ -68,8 +47,6 @@ export class ListDetailComponent implements OnInit {
       data => {
         this.disableSideNav = data;
         // console.log("ListDetailComponent :: ngOnInit :: subscribe :: disableSideNavChanges$ ");
-        // console.log("this.disableSideNav");
-        // console.log(this.disableSideNav);
       }
     ); 
     window.dispatchEvent(new Event('resize'));    
@@ -88,19 +65,23 @@ export class ListDetailComponent implements OnInit {
 
   viewDetails(restaurant){
     console.log("ListDetailComponent :: viewDetails()");
-    console.log("restaurant.name: " + restaurant.name);
     this.restaurant = restaurant;
-    //this.dataService.setSelectedRestaurant(restaurant);
     this.disableSideNav = true;
     this.dataService.changeDisableSideNav(this.disableSideNav);
+  }
+
+  onMouseOver(infoWindow, gm) {
+    console.log("ListDetailComponent :: onMouseOver()");
+    if (gm.lastOpen != null) {
+        gm.lastOpen.close();
+    }
+    gm.lastOpen = infoWindow;
+    infoWindow.open();
   }
 
   private initializeMap() {
     console.log('ListDetailComponent :: initializeMap');
     this.restaurant = this.dataService.getSelectedRestaurant();
-    // if (this.restaurant == undefined) {
-    //   this.router.navigate(['/listdetail']);
-    // }
   }
 
 }

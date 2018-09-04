@@ -12,21 +12,17 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MatCardModule, MatTableModule, MatFormFieldModule,
   MatInputModule, MatProgressSpinnerModule, MatTabsModule, 
   MatOptionModule, MatSelectModule, MatChipsModule, MatSlideToggleModule } from '@angular/material';
-import { MapBoxComponent } from './map-box/map-box.component';
 import { ROUTES } from './app.routes';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { AgmCoreModule } from '@agm/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FlexyComponent } from './flexy/flexy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListDetailComponent,
     ContactComponent,
-    MapBoxComponent,
-    MainNavComponent,
-    FlexyComponent
+    MainNavComponent
   ],
   imports: [
      BrowserModule
@@ -43,7 +39,6 @@ import { FlexyComponent } from './flexy/flexy.component';
   ],
   providers: [
      DataService
-    //,MapService
   ],
   bootstrap: [AppComponent]
 })
