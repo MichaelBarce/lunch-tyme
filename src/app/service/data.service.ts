@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject, of } from 'rxjs';
 import { Restaurants } from '../model/restaurants';
 import { Restaurant } from '../model/restaurant';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class DataService {
@@ -31,7 +32,9 @@ export class DataService {
 
   public getRestaurants(): Observable<Restaurants> {
     const url = 'https://s3.amazonaws.com/br-codingexams/restaurants.json';
-    return this.http.get<Restaurants>(url);
+    //const url = 'https://s3.amazonaws.com/br-codingexams/unavailable.json';
+    return this.http
+      .get<Restaurants>(url);
   }
 
   private errorHandler(error: Response) {

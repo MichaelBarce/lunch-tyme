@@ -1,9 +1,9 @@
 <div #containerLayout>
-    <div *ngIf="disableSideNav == true" restaurant-container [@itemAnimate]="false">
+    <div *ngIf="disableSideNav == true" [@itemAnimate]="false">
         <agm-map 
             #gm
             style="position: absolute;"
-            [style.left.px]="5"
+            [style.left.px]="0"
             [style.height.px]="mapHeight"
             [style.top.px]="65"
             [style.width.px]="width"    
@@ -56,7 +56,6 @@
             </mat-card-content>
         </mat-card>
     </div>
-    
     <div *ngIf="disableSideNav == false" class="restaurant-container" [@itemAnimate]="true">
         <div class="item" *ngFor="let restaurant of restaurantList">
             <mat-card>

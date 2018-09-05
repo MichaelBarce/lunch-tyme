@@ -11,18 +11,20 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MatListModule, MatCheckboxModule, MatGridListModule,
   MatCardModule, MatTableModule, MatFormFieldModule,
   MatInputModule, MatProgressSpinnerModule, MatTabsModule, 
-  MatOptionModule, MatSelectModule, MatChipsModule, MatSlideToggleModule } from '@angular/material';
+  MatOptionModule, MatSelectModule, MatChipsModule, MatSlideToggleModule, MatDialogModule } from '@angular/material';
 import { ROUTES } from './app.routes';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { AgmCoreModule } from '@agm/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListDetailComponent,
     ContactComponent,
-    MainNavComponent
+    MainNavComponent,
+    DialogBodyComponent
   ],
   imports: [
      BrowserModule
@@ -34,13 +36,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ,MatIconModule, MatListModule, MatCheckboxModule, MatGridListModule
     ,MatCardModule, MatTableModule, MatFormFieldModule, MatInputModule
     ,MatProgressSpinnerModule, MatTabsModule, MatOptionModule
-    ,MatSelectModule, MatChipsModule, MatSlideToggleModule
+    ,MatSelectModule, MatChipsModule, MatSlideToggleModule, MatDialogModule
     ,AgmCoreModule.forRoot({apiKey: 'AIzaSyACOQCGoUpwh5oQY0EepOBMghKWddIItAg'})
   ],
   providers: [
      DataService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogBodyComponent]
 })
 
 export class AppModule { }
