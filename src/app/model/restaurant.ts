@@ -1,5 +1,5 @@
-import { Location } from "./location";
-import { Contact } from "./contact";
+import { Location } from './location';
+import { Contact } from './contact';
 
 export interface Restaurant {
     name: string;

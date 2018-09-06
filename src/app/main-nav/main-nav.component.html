@@ -17,15 +17,15 @@
         <mat-icon aria-label="Side nav toggle icon">map</mat-icon>
       </button>
     </mat-toolbar>
-    <span class="toolbar-filler"></span>
 
     <!-- Restarant Map & Details  -->
-    <div *ngIf="displayDetails == true">
+    <div class="details-container" *ngIf="displayDetails == true">
       <agm-map 
-        #gm style="position: absolute;" 
+        #gm 
+        style="position: absolute;"         
         [style.left.px]="0" 
+        [style.top.px]="0" 
         [style.height.px]="mapHeight" 
-        [style.top.px]="65" 
         [style.width.px]="width"
         [zoom]="17" 
         [latitude]="restaurant.location.lat" 
@@ -39,7 +39,7 @@
             <agm-info-window #infoWindow>
               <div>
                 <a (click)="viewDetails(restaurant)" class="btn btn-attention pull-right">
-                  {{restaurant.name}}
+                  {{restaurant.name}}<br>{{restaurant.category}}
                   <i class="fa fa-angle-double-right"></i>
                 </a>
               </div>
@@ -50,7 +50,7 @@
       <mat-card 
         id="restaurant-details" 
         style="position: absolute;" 
-        [style.left.px]="5" 
+        [style.left.px]="0" 
         [style.height.px]="detailsHeight" 
         [style.top.px]="detailsTop"
         [style.width.px]="width">

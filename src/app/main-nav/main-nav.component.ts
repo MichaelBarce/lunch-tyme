@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { DataService } from '../service/data.service';
 import { Restaurant } from '../model/restaurant';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 
 @Component({
@@ -41,13 +41,12 @@ export class MainNavComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   sizeChange(event) {
-    //console.log("sizeChange");
-    this.winWidth = event.currentTarget.innerWidth - 10;
+    this.winWidth = event.currentTarget.innerWidth;
     this.winHeight = event.currentTarget.innerHeight;
     this.width = event.currentTarget.innerWidth;
-    this.detailsHeight = 250;
-    this.mapHeight = event.currentTarget.innerHeight - (65 + this.detailsHeight);
-    this.detailsTop = (65 + this.mapHeight);
+    this.detailsHeight = 225;
+    this.mapHeight = this.winHeight - (65 + this.detailsHeight);
+    this.detailsTop = (this.mapHeight);
   }
 
   constructor(
@@ -57,14 +56,12 @@ export class MainNavComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //console.log("MainNavComponent :: ngOnInit()");
     this.disableSideNav = false;
     this.getRestaurants();
-    window.dispatchEvent(new Event('resize'));  
+    window.dispatchEvent(new Event('resize'));
   }
 
   getRestaurants() {
-    //console.log("MainNavComponent :: getRestaurants()");
     this.dataService
       .getRestaurants()
       .subscribe(
@@ -72,13 +69,12 @@ export class MainNavComponent implements OnInit {
           this.restaurantList = data.restaurants;
           this.restaurant = this.validateRestaurant(data.restaurants[0]);
           this.displayDetails = true;
-          //console.log(this.restaurantList);
         },
         (err: HttpErrorResponse) => {
           if (err instanceof Error) {
-            this.dialogData = `An error occurred ${err.error.message}`;
+            this.dialogData = `An error occurred: ${err.error.message}`;
           } else {
-            this.dialogData = `Backend returned error code ${err.status}, body was: ${err.message}`;
+            this.dialogData = `Backend returned error code ${err.status}. Message: ${err.message}`;
           }
           this.openDialog();
         }
@@ -88,30 +84,32 @@ export class MainNavComponent implements OnInit {
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.dialogData;
-    let dialogRef = this.dialog.open(DialogBodyComponent, dialogConfig);
+    dialogConfig.role = 'alertdialog';
+    dialogConfig.height = '300px';
+    dialogConfig.width = '600px';
+    // let dialogRef = this.dialog.open(DialogBodyComponent, dialogConfig);
+    this.dialog.open(DialogBodyComponent, dialogConfig);
   }
 
   validateRestaurant(restaurant): Restaurant {
-    //console.log("MainNavComponent :: validateRestaurant()");
 
     // This validation approach is far from ideal.
-    // I beleive that there may be a way to perform type checking 
-    // on the JSON feed and to supply default values when the feed 
-    // fails to define certain fields/types (Contact data for Chuy's & Pluckers Wing Bar)  
-    // Finding relevant documentation and getting an alternative approach 
-    // to work was taking too long. While the current approach is less than optimal, 
-    // it at least prevents a crash and displays somethng meaningful to the user.
+    // I beleive that there may be a way to perform type checking
+    // on the JSON feed and to supply default values when the feed
+    // fails to provide certain fields/types (Contact data for Chuy's & Pluckers Wing Bar)
+    // Finding relevant documentation and getting an alternative approach
+    // to work was taking too long. While the current approach is less than optimal,
+    // it at least prevents a crash and displays something meaningful to the user.
 
-    var defaultContact;
+    let defaultContact;
 
-    if (restaurant.contact === null || restaurant.contact === undefined){
+    if (restaurant.contact === null || restaurant.contact === undefined) {
       defaultContact =  {
-        phone: "phone: not provided",
-        formattedPhone: "formattedPhone: not provided",
-        twitter: "twitter: not provided"
-      }
-    }
-    else {
+        phone: 'phone: not provided',
+        formattedPhone: 'formattedPhone: not provided',
+        twitter: 'twitter: not provided'
+      };
+    } else {
       defaultContact = restaurant.contact;
     }
 
@@ -132,24 +130,21 @@ export class MainNavComponent implements OnInit {
         postalCode: restaurant.location.postalCode,
         formattedAddress: restaurant.location.formattedAddress
       }
-    }
+    };
     return validatedRestaurant;
   }
 
-  viewDetails(restaurant){
-    //console.log("ListDetailComponent :: viewDetails()");
+  viewDetails(restaurant) {
     this.restaurant = this.validateRestaurant(restaurant);
     this.displayDetails = true;
   }
 
   onMouseOver(infoWindow, gm) {
-    //console.log("ListDetailComponent :: onMouseOver()");
     if (gm.lastOpen != null) {
         gm.lastOpen.close();
     }
     gm.lastOpen = infoWindow;
     infoWindow.open();
   }
-
 
 }
