@@ -87,7 +87,6 @@ export class MainNavComponent implements OnInit {
     dialogConfig.role = 'alertdialog';
     dialogConfig.height = '300px';
     dialogConfig.width = '600px';
-    // let dialogRef = this.dialog.open(DialogBodyComponent, dialogConfig);
     this.dialog.open(DialogBodyComponent, dialogConfig);
   }
 
